@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 //
-// Feeling fear in using MD5, these tests show that I (and Java) can get the proper hashes
+// Feeling fear in using MD5, these tests show that I (and Java security) can get proper hash results
 // see https://en.wikipedia.org/wiki/MD5
 //
 
