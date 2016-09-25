@@ -9,9 +9,8 @@ class MD5 {
 
     MD5(String input) throws NoSuchAlgorithmException {
 
-        byte[] bytesOfMessage = input.getBytes();
         MessageDigest md = MessageDigest.getInstance("MD5");
-        hash = md.digest(bytesOfMessage);
+        hash = md.digest(input.getBytes());
 
     }
 
