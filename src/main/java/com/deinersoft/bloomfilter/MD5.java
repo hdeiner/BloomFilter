@@ -1,14 +1,13 @@
 package com.deinersoft.bloomfilter;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5 {
+class MD5 {
 
     private byte[] hash;
 
-    MD5(String input) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    MD5(String input) throws NoSuchAlgorithmException {
 
         byte[] bytesOfMessage = input.getBytes();
         MessageDigest md = MessageDigest.getInstance("MD5");
@@ -19,7 +18,7 @@ public class MD5 {
     @Override
     public String toString(){
 
-        StringBuffer hexString = new StringBuffer();
+        StringBuilder hexString = new StringBuilder();
         for (byte hashByte : hash) {
             hexString.append(String.format("%02x", hashByte));
         }
