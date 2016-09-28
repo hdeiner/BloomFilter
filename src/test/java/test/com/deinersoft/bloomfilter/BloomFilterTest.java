@@ -4,6 +4,9 @@ import com.deinersoft.bloomfilter.BloomFilter;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -46,5 +49,16 @@ public class BloomFilterTest {
         bloomFilter.add("Dog");
         assertThat(bloomFilter.contains("Cat"), is(true));
         assertThat(bloomFilter.contains("Dog"), is(true));
+    }
+
+    @Test
+    public void wordsFileChecker() throws IOException, NoSuchAlgorithmException {
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("resources/words"))) {
+            for(String word; (word = bufferedReader.readLine()) != null; ) {
+                assertThat(bloomFilter.contains(word), is(false));
+                bloomFilter.add(word);
+                assertThat(bloomFilter.contains(word), is(true));
+            }
+        }
     }
 }
