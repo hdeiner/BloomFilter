@@ -26,4 +26,15 @@ public class BloomFilterTest {
     public void bitSetSizeCorrect(){
         assertThat(bloomFilter.getBitSet().size(), is(expectedElementsCount*bitsPerElement));
     }
+
+    @Test
+    public void emptyBloomFilterDoesNotContainTheWordCat(){
+        assertThat(bloomFilter.contains("Cat"), is(false));
+    }
+
+    @Test
+    public void emptyBloomFilterAddsCatAndThenContainsCat(){
+        bloomFilter.add("Cat");
+        assertThat(bloomFilter.contains("Cat"), is(true));
+    }
 }

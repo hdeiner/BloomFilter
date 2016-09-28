@@ -22,6 +22,14 @@ public class BloomFilter {
         return bitSet;
     }
 
+    public void add(String word) {
+        return;
+    }
+
+    public boolean contains(String word) {
+        return false;
+    }
+
 }
 
 
