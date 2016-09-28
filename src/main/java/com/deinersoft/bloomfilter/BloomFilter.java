@@ -17,7 +17,7 @@ public class BloomFilter {
         this.expectedElementsCount = expectedElementsCount;
         this.bitsPerElement = bitsPerElement;
         this.numberOfHashFunctionsToUse = numberOfHashFunctionsToUse;
-        this.bitSetSize = (numberOfHashFunctionsToUse * bitsPerElement * expectedElementsCount);
+        this.bitSetSize = (bitsPerElement * expectedElementsCount);
         this.bitSet = new BitSet(bitSetSize);
     }
 

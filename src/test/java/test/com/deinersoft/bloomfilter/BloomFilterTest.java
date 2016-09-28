@@ -21,15 +21,15 @@ public class BloomFilterTest {
 
     @Before
     public void initialize(){
-        expectedElementsCount = 100000;
-        bitsPerElement = 160;
-        numberOfHashFunctionsToUse = 6;
+        expectedElementsCount = 250000;
+        bitsPerElement = 40;
+        numberOfHashFunctionsToUse = 5;
         bloomFilter = new BloomFilter(expectedElementsCount, bitsPerElement, numberOfHashFunctionsToUse);
     }
 
     @Test
     public void bitSetSizeCorrect(){
-        assertThat(bloomFilter.getBitSet().size(), is(expectedElementsCount*bitsPerElement*numberOfHashFunctionsToUse));
+        assertThat(bloomFilter.getBitSet().size(), is(expectedElementsCount*bitsPerElement));
     }
 
     @Test
