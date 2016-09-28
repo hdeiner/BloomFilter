@@ -14,6 +14,10 @@ public class MD5 {
 
     }
 
+    public byte[] getHash() {
+        return hash;
+    }
+
     @Override
     public String toString(){
 
