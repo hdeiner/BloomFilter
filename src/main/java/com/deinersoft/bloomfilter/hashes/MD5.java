@@ -1,13 +1,13 @@
-package com.deinersoft.bloomfilter;
+package com.deinersoft.bloomfilter.hashes;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-class MD5 {
+public class MD5 {
 
     private byte[] hash;
 
-    MD5(String input) throws NoSuchAlgorithmException {
+    public MD5(String input) throws NoSuchAlgorithmException {
 
         MessageDigest md = MessageDigest.getInstance("MD5");
         hash = md.digest(input.getBytes());

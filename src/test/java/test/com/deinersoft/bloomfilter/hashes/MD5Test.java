@@ -1,4 +1,6 @@
-package com.deinersoft.bloomfilter;
+package test.com.deinersoft.bloomfilter.hashes;
+
+import com.deinersoft.bloomfilter.hashes.MD5;
 
 import org.junit.Test;
 
