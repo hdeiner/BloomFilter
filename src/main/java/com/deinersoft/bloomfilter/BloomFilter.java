@@ -7,15 +7,11 @@ import java.util.BitSet;
 
 public class BloomFilter {
 
-    private int expectedElementsCount;
-    private int bitsPerElement;
-    private int numberOfHashFunctionsToUse;
-    private int bitSetSize;
-    private BitSet bitSet;
+    private final int numberOfHashFunctionsToUse;
+    private final int bitSetSize;
+    private final BitSet bitSet;
 
     public BloomFilter(int expectedElementsCount, int bitsPerElement, int numberOfHashFunctionsToUse) {
-        this.expectedElementsCount = expectedElementsCount;
-        this.bitsPerElement = bitsPerElement;
         this.numberOfHashFunctionsToUse = numberOfHashFunctionsToUse;
         this.bitSetSize = (bitsPerElement * expectedElementsCount);
         this.bitSet = new BitSet(bitSetSize);
@@ -35,7 +31,7 @@ public class BloomFilter {
         int[] hashes = new int[numberOfHashFunctionsToUse];
         for (int i=0; i<numberOfHashFunctionsToUse; i++) {
             byte[] hashBytes = new MD5(word).getHash();
-            hashes[i] = (hashBytes[i+0]<<24) & 0xff000000 | (hashBytes[i+1]<<16) & 0x00ff0000 | (hashBytes[i+2]<< 8) & 0x0000ff00 | (hashBytes[i+3]<< 0) & 0x000000ff;
+            hashes[i] = (hashBytes[i]<<24) & 0xff000000 | (hashBytes[i+1]<<16) & 0x00ff0000 | (hashBytes[i+2]<< 8) & 0x0000ff00 | (hashBytes[i+3]) & 0x000000ff;
         }
         return hashes;
     }

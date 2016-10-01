@@ -15,8 +15,8 @@ import static org.hamcrest.core.Is.is;
 
 public class BloomFilterTest {
 
-    private static int actualElementsCount;                                                                                                                                                                                                                                                                         ;
-    private int expectedElementsCount;                                                                                                                                                                                                                                                                         ;
+    private static int actualElementsCount;
+    private int expectedElementsCount;
     private int bitsPerElement;
     private int numberOfHashFunctionsToUse;
     private BloomFilter bloomFilter;
@@ -24,7 +24,7 @@ public class BloomFilterTest {
     @BeforeClass
     public static void getActualElementCount() throws IOException {
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("resources/words"))) {
-            for(String word; (word = bufferedReader.readLine()) != null; ) {
+            while (bufferedReader.readLine() != null ) {
                 actualElementsCount++;
             }
         }
