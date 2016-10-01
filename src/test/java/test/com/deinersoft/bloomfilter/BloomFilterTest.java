@@ -119,5 +119,6 @@ public class BloomFilterTest {
         System.out.println("bitsPerElement              = " + Integer.toString(bitsPerElement));
         System.out.println("numberOfHashFunctionsToUse  = " + Integer.toString(numberOfHashFunctionsToUse));
         System.out.println("False positives             = " + Integer.toString(falsePositives));
+        System.out.println("actualFalsePositiveRate     = " + String.format("%.2f",new Float(falsePositives)/new Float(actualElementsCount)*100.0)+"%");
     }
 }
