@@ -121,8 +121,15 @@ public class BloomFilterTest {
         System.out.println("False positives              = " + Integer.toString(falsePositives));
         System.out.println("actualFalsePositiveRate      = " + String.format("%.2f",(float)(falsePositives)/(float)(actualElementsCount)*100.0)+"%");
 
+        System.out.println("theoreticalFalsePositiveRate = " + String.format("%.2f",theoreticalFalsePositiveRate()*100.0)+"%");
+    }
+
+    double theoreticalFalsePositiveRate () {
         // (1 - e^(k * n / m)) ^ k
-        double theoreticalFalsePositiveRate = Math.abs ( Math.pow(1.0 - Math.exp(((1.0 * numberOfHashFunctionsToUse)* (double) actualElementsCount) / (((double) bitsPerElement)*(double)expectedElementsCount)),numberOfHashFunctionsToUse));
-        System.out.println("theoreticalFalsePositiveRate = " + String.format("%.2f",theoreticalFalsePositiveRate*100.0)+"%");
+        double result = Math.pow(1.0 -
+                            Math.exp(((1.0*numberOfHashFunctionsToUse)*(double)actualElementsCount)
+                                    / (((double) bitsPerElement)*(double)expectedElementsCount))
+                        ,numberOfHashFunctionsToUse);
+        return Math.abs(result);
     }
 }
