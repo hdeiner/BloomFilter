@@ -124,7 +124,7 @@ public class BloomFilterTest {
         System.out.println("theoreticalFalsePositiveRate = " + String.format("%.2f",theoreticalFalsePositiveRate()*100.0)+"%");
     }
 
-    double theoreticalFalsePositiveRate () {
+    private double theoreticalFalsePositiveRate () {
         // (1 - e^(k * n / m)) ^ k
         double result = Math.pow(1.0 -
                             Math.exp(((1.0*numberOfHashFunctionsToUse)*(double)actualElementsCount)
