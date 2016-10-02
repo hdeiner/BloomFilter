@@ -125,6 +125,7 @@ public class BloomFilterTest {
     }
 
     private double theoreticalFalsePositiveRate () {
+        // http://pages.cs.wisc.edu/~cao/papers/summary-cache/node8.html
         // (1 - e^(k * n / m)) ^ k
         double result = Math.pow(1.0 -
                             Math.exp(((1.0*numberOfHashFunctionsToUse)*(double)actualElementsCount)
