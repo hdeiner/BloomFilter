@@ -113,12 +113,16 @@ public class BloomFilterTest {
 
     private void printTestResults(String testName, int expectedElementsCount, int bitsPerElement, int numberOfHashFunctionsToUse, int falsePositives) {
         System.out.println("");
-        System.out.println("testName                    = " + testName);
-        System.out.println("actualElementsCount         = " + Integer.toString(actualElementsCount));
-        System.out.println("expectedElementsCount       = " + Integer.toString(expectedElementsCount));
-        System.out.println("bitsPerElement              = " + Integer.toString(bitsPerElement));
-        System.out.println("numberOfHashFunctionsToUse  = " + Integer.toString(numberOfHashFunctionsToUse));
-        System.out.println("False positives             = " + Integer.toString(falsePositives));
-        System.out.println("actualFalsePositiveRate     = " + String.format("%.2f",(float)(falsePositives)/(float)(actualElementsCount)*100.0)+"%");
+        System.out.println("testName                     = " + testName);
+        System.out.println("actualElementsCount          = " + Integer.toString(actualElementsCount));
+        System.out.println("expectedElementsCount        = " + Integer.toString(expectedElementsCount));
+        System.out.println("bitsPerElement               = " + Integer.toString(bitsPerElement));
+        System.out.println("numberOfHashFunctionsToUse   = " + Integer.toString(numberOfHashFunctionsToUse));
+        System.out.println("False positives              = " + Integer.toString(falsePositives));
+        System.out.println("actualFalsePositiveRate      = " + String.format("%.2f",(float)(falsePositives)/(float)(actualElementsCount)*100.0)+"%");
+
+        // (1 - e^(k * n / m)) ^ k
+        double theoreticalFalsePositiveRate = Math.abs ( Math.pow(1.0 - Math.exp((((double) 1.0 * numberOfHashFunctionsToUse)* (double) actualElementsCount) / (((double) bitsPerElement)*(double)expectedElementsCount)),numberOfHashFunctionsToUse));
+        System.out.println("theoreticalFalsePositiveRate = " + String.format("%.2f",theoreticalFalsePositiveRate*100.0)+"%");
     }
 }
